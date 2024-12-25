@@ -1,6 +1,7 @@
 package com.automationframework.tests.flightreservation;
 
 import com.automationframework.pages.flightreservation.*;
+import com.automationframework.tests.AbstractTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -9,23 +10,16 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class FlightReservationTest {
+public class FlightReservationTest extends AbstractTest {
 
-    private WebDriver driver;
     private String noOfPassengers;
     private String expectedPrice;
 
     @BeforeTest
     @Parameters({"noOfPassengers", "expectedPrice"})
-    public void setupDriver(String noOfPassengers, String expectedPrice) {
+    public void setParameters(String noOfPassengers, String expectedPrice) {
         this.noOfPassengers = noOfPassengers;
         this.expectedPrice = expectedPrice;
-        this.driver = new ChromeDriver();
-    }
-
-    @AfterTest
-    public void quitDriver() {
-        this.driver.quit();
     }
 
     @Test
