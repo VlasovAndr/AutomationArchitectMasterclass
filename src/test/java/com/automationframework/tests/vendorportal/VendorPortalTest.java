@@ -22,7 +22,7 @@ public class VendorPortalTest extends AbstractTest {
     public void setPageObjects(String testDataPath) throws Exception {
         this.loginPage = new LoginPage(driver);
         this.dashboardPage = new DashboardPage(driver);
-        this.testData = JsonUtil.getTestData(testDataPath);
+        this.testData = JsonUtil.getTestData(testDataPath, VendorPortalTestData.class);
     }
 
     @Test
