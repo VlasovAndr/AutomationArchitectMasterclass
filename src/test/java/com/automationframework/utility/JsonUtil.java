@@ -1,11 +1,9 @@
-package com.automationframework.tests.utility;
+package com.automationframework.utility;
 
-import com.automationframework.tests.vendorportal.model.VendorPortalTestData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 public class JsonUtil {
