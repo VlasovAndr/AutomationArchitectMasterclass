@@ -3,14 +3,14 @@ package com.automationframework.tests.vendorportal;
 import com.automationframework.pages.vendorportal.DashboardPage;
 import com.automationframework.pages.vendorportal.LoginPage;
 import com.automationframework.tests.AbstractTest;
-import com.automationframework.tests.utility.JsonUtil;
+import com.automationframework.utility.Config;
+import com.automationframework.utility.Constants;
+import com.automationframework.utility.JsonUtil;
 import com.automationframework.tests.vendorportal.model.VendorPortalTestData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 public class VendorPortalTest extends AbstractTest {
     private LoginPage loginPage;
@@ -27,7 +27,7 @@ public class VendorPortalTest extends AbstractTest {
 
     @Test
     public void loginTest() {
-        loginPage.goTo("https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/vendor-app/index.html");
+        loginPage.goTo(Config.get(Constants.VENDOR_PORTAL_URL));
         Assert.assertTrue(loginPage.isAt());
         loginPage.login(testData.username(), testData.password());
     }

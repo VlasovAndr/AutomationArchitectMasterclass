@@ -1,16 +1,12 @@
 package com.automationframework.tests.flightreservation;
 
 import com.automationframework.pages.flightreservation.*;
-import com.automationframework.pages.vendorportal.DashboardPage;
-import com.automationframework.pages.vendorportal.LoginPage;
 import com.automationframework.tests.AbstractTest;
 import com.automationframework.tests.flightreservation.model.FlightReservationTestData;
-import com.automationframework.tests.utility.JsonUtil;
-import com.automationframework.tests.vendorportal.model.VendorPortalTestData;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.automationframework.utility.Config;
+import com.automationframework.utility.Constants;
+import com.automationframework.utility.JsonUtil;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -27,7 +23,7 @@ public class FlightReservationTest extends AbstractTest {
     @Test
     public void userRegistrationTest() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.goTo("https://d1uh9e7cu07ukd.cloudfront.net/selenium-docker/reservation-app/index.html");
+        registrationPage.goTo(Config.get(Constants.FLIGHT_RESERVATION_URL));
         Assert.assertTrue(registrationPage.isAt());
 
         registrationPage.enterUserDetails(testData.firstName(), testData.lastName());
