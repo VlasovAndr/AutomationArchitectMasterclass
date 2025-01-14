@@ -6,6 +6,8 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+    environment:
+      - SE_ENABLE_TRACING=false
   chrome:
     image: selenium/node-chromium:4.27
     shm_size: 2gb
@@ -19,6 +21,7 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_OVERRIDE_MAX_SESSIONS=true
       - SE_NODE_MAX_SESSIONS=4
+      - SE_ENABLE_TRACING=false
   firefox:
     image: selenium/node-firefox:4.27
     shm_size: 2gb
@@ -32,3 +35,26 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - SE_NODE_OVERRIDE_MAX_SESSIONS=true
       - SE_NODE_MAX_SESSIONS=4
+      - SE_ENABLE_TRACING=false
+  vendor-portal:
+    image: automation/selenium
+    depends_on:
+      - chrome
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - THREAD_COUNT=4
+      - TEST_SUITE=vendor-portal.xml
+    volumes:
+      - ./output/vendor-portal:/home/selenium-docker/test-output
+  flight-reservation:
+    image: automation/selenium
+    depends_on:
+      - chrome
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - THREAD_COUNT=4
+      - TEST_SUITE=flight-reservation.xml
+    volumes:
+      - ./output/flight-reservation:/home/selenium-docker/test-output
