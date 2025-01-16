@@ -31,7 +31,7 @@ pipeline{
             }
             steps{
                 // There might be a warning.
-                bat 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
+                bat 'docker login -u %DOCKER_HUB_USR% -p %DOCKER_HUB_PSW%'
                 bat 'docker push vlasovandrei/automation_selenium'
             }
         }
